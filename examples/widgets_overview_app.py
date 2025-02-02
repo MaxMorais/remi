@@ -77,7 +77,7 @@ class MyApp(App):
         self.btUploadFile.onfailed.do(self.fileupload_on_failed)
 
         items = ('Danny Young','Christine Holand','Lars Gordon','Roberto Robitaille')
-        self.listView = gui.ListView.new_from_list(items, width=300, height=120, margin='10px')
+        self.listView = gui.ListView.new_from_list(items, width=285, height=120, margin='10px')
         self.listView.onselection.do(self.list_view_on_selected)
 
         self.link = gui.Link("http://localhost:8081", "A link to here", width=200, height=30, margin='10px')
