@@ -14,14 +14,8 @@
    limitations under the License.
 """
 import logging
-try:
-    from http.server import HTTPServer, BaseHTTPRequestHandler
-except ImportError:
-    from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
-try:
-    import socketserver
-except ImportError:
-    import SocketServer as socketserver
+from http.server import HTTPServer, BaseHTTPRequestHandler
+import socketserver
 import socket
 import ssl
 
@@ -36,17 +30,11 @@ import signal
 import time
 import os
 import re
-try:
-    from urllib import unquote
-    from urllib import quote
-    from urlparse import urlparse
-    from urlparse import parse_qs
-except ImportError:
-    from urllib.parse import unquote
-    from urllib.parse import quote
-    from urllib.parse import unquote_to_bytes
-    from urllib.parse import urlparse
-    from urllib.parse import parse_qs
+from urllib.parse import unquote
+from urllib.parse import quote
+from urllib.parse import unquote_to_bytes
+from urllib.parse import urlparse
+from urllib.parse import parse_qs
 import cgi
 import weakref
 
@@ -63,9 +51,6 @@ def gzip_encode(content):
 clients = {}
 runtimeInstances = weakref.WeakValueDictionary()
 
-pyLessThan3 = sys.version_info < (3,)
-
-
 _MSG_ACK = '3'
 _MSG_JS = '2'
 _MSG_UPDATE = '1'
@@ -73,22 +58,16 @@ _MSG_UPDATE = '1'
 
 def to_websocket(data):
     # encoding end decoding utility function
-    if pyLessThan3:
-        return quote(data)
     return quote(data, encoding='utf-8')
 
 
 def from_websocket(data):
     # encoding end decoding utility function
-    if pyLessThan3:
-        return unquote(data)
     return unquote(data, encoding='utf-8')
 
 
 def encode_text(data):
-    if not pyLessThan3:
-        return data.encode('utf-8')
-    return data
+    return data.encode('utf-8')
 
 
 def get_method_by_name(root_node, name):
@@ -152,8 +131,6 @@ class WebSocketsHandler(socketserver.StreamRequestHandler):
 
     @staticmethod
     def bytetonum(b):
-        if pyLessThan3:
-            b = ord(b)
         return b
 
     def read_next_message(self):
@@ -224,9 +201,7 @@ class WebSocketsHandler(socketserver.StreamRequestHandler):
         else:
             out.append(127)
             out += struct.pack('>Q', length)
-        if not pyLessThan3:
-            message = message.encode('utf-8')
-        out = out + message
+        out = out + message.encode('utf-8')
 
         readable, writable, errors = select.select([], [self.request,], [], self.server.websocket_timeout_timer_ms) #last parameter is timeout, when 0 is non blocking
         #self._log.debug('socket status readable=%s writable=%s errors=%s'%((self.request in readable), (self.request in writable), (self.request in error$

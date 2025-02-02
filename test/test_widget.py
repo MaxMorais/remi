@@ -116,8 +116,8 @@ class TestProgress(unittest.TestCase):
         h = SimpleParser()
         h.feed(widget.repr())
         (tag, attrs) = h.elements[0]
-        self.assertEquals(int(attrs['max']),12)
-        self.assertEquals(int(attrs['value']),1)
+        self.assertEqual(int(attrs['max']),12)
+        self.assertEqual(int(attrs['value']),1)
 
 class TestGenericDialog(unittest.TestCase):
     '''
@@ -243,7 +243,7 @@ class TestGenericObject(unittest.TestCase):
         h = SimpleParser()
         h.feed(widget.repr())
         (tag, attrs) = h.elements[0]
-        self.assertEquals(attrs['data'], 'shockwave.swf')
+        self.assertEqual(attrs['data'], 'shockwave.swf')
 
         
 class TestFileFolderNavigator(unittest.TestCase):
