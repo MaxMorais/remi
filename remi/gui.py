@@ -48,8 +48,6 @@ from .server import runtimeInstances
 
 log = logging.getLogger('remi.gui')
 
-pyLessThan3 = sys.version_info < (3,)
-
 
 def to_pix(x):
     return str(x) + 'px'
@@ -84,10 +82,6 @@ def load_resource(filename):
     with open(filename, 'rb') as f:
         data = f.read()
     data = base64.b64encode(data)
-    if pyLessThan3:
-        data = data.encode('utf-8')
-    else:
-        data = str(data, 'utf-8')
     return "data:%(mime)s;base64,%(data)s" % {'mime': mimetype, 'data': data}
 
 
@@ -3791,10 +3785,7 @@ class FileFolderNavigator(GridBox):
                     return (1 if a > b else -1)
 
         log.debug("FileFolderNavigator - populate_folder_items")
-
-        if pyLessThan3:
-            directory = directory.decode('utf-8')
-
+        
         l = os.listdir(directory)
         l.sort(key=functools.cmp_to_key(_sort_files))
 

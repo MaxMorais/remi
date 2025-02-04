@@ -8,47 +8,76 @@
     src: local('Roboto'), local('Roboto-Regular'), url('/res:font.woff2') format('woff2');
 }
 
-::-webkit-scrollbar {
-    width: .5rem;
-    background-color: var(--surface-gray-1, #F8F8F8)
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 9999px;
-    background-color: var(--surface-gray-3, #EDEDED)
-}
-
 
 :root {
     /* Body */
-    --background: hsl(0, 0%, 100%);
-    --foreground: hsl(222.2, 47.4%, 11.2%);
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
     /* Tabs, Skeleton, Switch */
-    --muted: hsl(240, 40%, 96.1%);
-    --muted-foreground: hsl(215.4, 16.3%, 46.9%);
+    --muted: 240 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
     /* Border */
-    --border: hsl(214.3, 31.8%, 91.4%);
+    --border: 214.3 31.8% 91.4%;
     /* Input */
-    --input: hsl(214.3, 31.8%, 91.4%);
+    --input: 214.3 31.8% 91.4%;
 
     /* Button Primary */
-    --primary: hsl(222.2, 47.4%, 11.2%);
-    --primary-foreground: hsl(210, 40%, 98%);
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
     /* Button Secondary */
-    --secondary: hsl(210, 40%, 96.1%);
-    --secondary-foreground: hsl(222, 47.4%, 11.2%);
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47.4% 11.2%;
 
     /* Accent */
-    --accent: hsl(210, 40%, 96.1%);
-    --accent-foreground: hsl(222, 47.4%, 11.2%);
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47.4% 11.2%;
 
     /* Focus Ring */
-    --ring: hsl(215, 20.2%, 65.1%);
+    --ring: 215 20.2% 65.1%;
     /* Radius */
     --radius: 0.5rem;
+    --checkbox-radius: 4px;
+
+    /* Scrollbars */
+    --scrollbar-width: 12px;
 }
 
+/* Scrollbar Track */
+::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    height: var(--scrollbar-width); 
+    background-color: hsl(var(--muted)); 
+    border-radius: var(--radius, 4px);
+}
+
+/* Scrollbar Thumb */
+::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--primary)); /* Color of the thumb */
+    border-radius: var(--radius); /* Rounded corners */
+    border: 2px solid transparent; /* Transparent border for smooth edges */
+    background-clip: padding-box; /* Ensures the border doesn't overlap the background */
+    transition: background-color 0.2s; /* Smooth transition for hover effect */
+}
+
+/* Scrollbar Thumb Hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--primary)); /* Darker color on hover */
+}
+
+/* Scrollbar Thumb Active */
+::-webkit-scrollbar-thumb:active {
+    background-color: hsl(var(--primary)); /* Even darker color when clicked */
+}
+
+/* Scrollbar Corner (optional) */
+::-webkit-scrollbar-corner {
+    background-color: hsl(var(--muted)); /* Match the track color */
+}
+
+button {
+    border: unset;
+}
 
 .remi-main textarea:focus,
 .remi-main input[type='checkbox']:focus,
@@ -57,14 +86,14 @@
 .remi-main input[type='text']:focus,
 .remi-main input[type='date']:focus,
 .remi-main select:focus {
-    outline: 2px solid var(--ring);
+    outline: 2px solid hsl(var(--ring));
 }
 ::-moz-selection {
-    outline: 2px solid var(--ring);
+    outline: 2px solid hsl(var(--ring));
     text-shadow: none
 }
 ::selection {
-    outline: 2px solid var(--ring);
+    outline: 2px solid hsl(var(--ring));
     text-shadow: none
 }
 .remi-main audio,
@@ -229,7 +258,7 @@ body.remi-main > div {
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
 }
 .remi-main div {
-    background-color: var(--background);
+    background-color: hsl(var(--background));
     z-index: 0;
 }
 .remi-main *[disabled='True']{
@@ -238,22 +267,22 @@ body.remi-main > div {
 }
 .remi-main .ListView {
     padding: 5px;
-    background-color: var(--background);
+    background-color: hsl(var(--background));
     cursor: default;
     overflow: auto;
     list-style: none;
 }
 .remi-main option:hover {
-    background: var(--border);
+    background: hsl(var(--border));
     outline: 1px solid red;
 }
 .remi-main .ListItem:hover {
-    background: var(--accent);
-    color: var(--accent-foreground)
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground))
 }
 .remi-main .ListItem[selected='True'] {
-    background: var(--accent);
-    color: var(--accent-foreground)
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground))
 }
 .remi-main input[type='number'],
 .remi-main input[type='text'],
@@ -261,7 +290,7 @@ body.remi-main > div {
 .remi-main input[type='color'],
 .remi-main textarea,
 .remi-main select {
-    border: 1px solid var(--input);
+    border: 1px solid hsl(var(--input));
     border-radius: var(--radius);
     font-size: 95%;
     height: 28px;
@@ -270,17 +299,13 @@ body.remi-main > div {
     background: 0 0;
     text-align: left;
     color: inherit;
-    background-color: var(--background);
+    background-color: hsl(var(--background));
 }
 
-.remi-main input[type='checkbox'] {
-    background-color: var(--background);
-    color: var(--foreground)
-}
 
 .remi-main input[type='number']:checked {
-    background-color: var(--primary);
-    color: var(--primary-foreground)
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground))
 }
 
 .remi-main textarea:disabled,
@@ -289,23 +314,79 @@ body.remi-main > div {
 .remi-main input[type='number']:disabled,
 .remi-main input[type='text']:disabled,
 .remi-main input[type='date']:disabled {
-    color: var(--muted-foreground);
+    color: hsl(var(--muted-foreground));
     cursor: default;
-    border: 1px solid var(--border);
+    border: 1px solid hsl(var(--border));
     border-radius: var(--radius);
+    background: hsl(var(--muted));
 }
+
+input[type="checkbox"] {
+    /* Hide the default checkbox */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid hsl(var(--border));
+    border-radius: var(--checkbox-radius);
+    background-color: hsl(var(--background));
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Checked state */
+input[type="checkbox"]:checked {
+    background-color: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+}
+
+/* Checkmark */
+input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: relative;
+    left: -2px;
+    top: -6px;
+    width: 5px;
+    height: 10px;
+    font-size: x-large;
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -60%) rotate(45deg);
+}
+
+/* Hover state */
+input[type="checkbox"]:hover {
+    border-color: hsl(var(--primary));
+}
+
+/* Disabled state */
+input[type="checkbox"]:disabled {
+    background-color: hsl(var(--muted));
+    border-color: hsl(var(--muted-foreground));
+    cursor: not-allowed;
+}
+
+input[type="checkbox"]:disabled:checked {
+    background-color: hsl(var(--muted-foreground));
+    border-color: hsl(var(--muted-foreground));
+}
+
+/* Focus state */
+input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px hsl(var(--ring));
+}
+
 .remi-main select {
-    border: 1px solid var(--border);
+    border: 1px solid hsl(var(--border));
     border-radius: var(--radius);
 }
-.remi-main input[type='checkbox'] {
-    height: 100%;
-    min-height: 20px;
-    min-width: 20px;
-}
+
 .remi-main button {
     background: 0 0;
-    /*border: 1px solid var(--border);*/
+    /*border: 1px solid hsl(var(--border));*/
     border-radius: var(--radius);
     position: relative;
     margin: 0;
@@ -314,8 +395,8 @@ body.remi-main > div {
     font-weight: 500;
     text-align: center;
     vertical-align: middle;
-    background: var(--primary);
-    color: var(--primary-foreground);
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
     box-shadow: none;
 }
 @keyframes remi-main-outline-animation {
@@ -339,11 +420,11 @@ body.remi-main > div {
     color: #9F9F9F;
 }
 .remi-main button:active{
-    background: var(--primary);
+    background: hsl(var(--primary));
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .12), 0 2px 0px -1px rgba(0, 0, 0, .2);
 }
 .remi-main .TextInput {
-    border: 1px solid var(--border);
+    border: 1px solid hsl(var(--border));
     border-radius: var(--radius);
     display: block;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -387,29 +468,29 @@ body.remi-main > div {
 
 .remi-main .TableItem {
     padding: 0px;
-    border: 1px solid var(--border);
+    border: 1px solid hsl(var(--border));
     outline: 0px;
 }
 .remi-main .TableEditableItem>.TextInput {
     height: 100%;
 }
 .remi-main td {
-    border: 1px solid var(--border);
+    border: 1px solid hsl(var(--border));
     outline: 0px;
-    background-color: var(--background);
+    background-color: hsl(var(--background));
 }
 .remi-main th {
-    border: 1px solid var(--border);
+    border: 1px solid hsl(var(--border));
     outline: 0px;
-    background:var(--background);
-    color: var(--foreground);
+    background:hsl(var(--background));
+    color: hsl(var(--foreground));
     font-weight: normal;
 }
 .remi-main p.DialogTitle {
-    background: var(--background);
-    border-bottom: 1px solid var(--border);
+    background: hsl(var(--background));
+    border-bottom: 1px solid hsl(var(--border));
     padding: 10px;
-    color: var(--foreground);
+    color: hsl(var(--foreground));
     font-weight: bold;
     text-align: center;
 }
@@ -419,9 +500,9 @@ body.remi-main > div {
     font-weight: bold;
 }
 .remi-main nav > ul.Menu {
-    background: var(--background);
+    background: hsl(var(--background));
     border: 0px;
-    color: var(--foreground);
+    color: hsl(var(--foreground));
     margin: 0px;
 }
 .remi-main ul.Menu {
@@ -444,7 +525,7 @@ body.remi-main > div {
 }
 .remi-main .MenuItem .Menu {
     display: none;
-    background-color: var(--background);
+    background-color: hsl(var(--background));
     /*border: 1px solid #9C9B9B;*/
 
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
@@ -455,19 +536,19 @@ body.remi-main > div {
     z-index: 1;
 }
 .remi-main .MenuBar>.Menu>.MenuItem {
-    background: var(--background);
+    background: hsl(var(--background));
 }
 
 .remi-main .MenuBar {
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid hsl(var(--border));
 }
 .remi-main .Menu > .MenuItem:focus-within {
-    background: var(--accent);
-    color: var(--accent-foreground)
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground))
 }
 .remi-main .MenuItem .MenuItem:focus-within {
-    background: var(--accent);
-    color: var(--accent-foreground)
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground))
 }
 .remi-main .Menu::after {
     content: "";
@@ -488,7 +569,7 @@ body.remi-main > div {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: var(--primary);
+    background: hsl(var(--primary));
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
 }
 .remi-main input[type='range'] {
@@ -502,7 +583,7 @@ body.remi-main > div {
     user-select: none;
     outline: 0;
     padding: 0;
-    color: var(--primary);
+    color: hsl(var(--primary));
     -webkit-align-self: center;
     -ms-flex-item-align: center;
     align-self: center;
@@ -517,16 +598,16 @@ body.remi-main > div {
     display: none
 }
 .remi-main input[type='range']::-webkit-slider-runnable-track {
-    background: var(--border);
+    background: hsl(var(--border));
     height: 2px;
 }
 .remi-main input[type='range']::-moz-range-track {
-    background: var(--border);
+    background: hsl(var(--border));
     height: 2px;
     border: none;
 }
 .remi-main input[type='range']::-ms-track {
-    background: var(--border);
+    background: hsl(var(--border));
     height: 2px;
     color: transparent;
     width: 100%;
@@ -534,7 +615,7 @@ body.remi-main > div {
 }
 .remi-main input[type='range']::-ms-fill-lower {
     padding: 0;
-    background: linear-gradient(to right, transparent, transparent 16px, var(--border), var(--border))
+    background: linear-gradient(to right, transparent, transparent 16px, hsl(var(--border)), hsl(var(--border)))
 }
 .remi-main input[type='range']::-ms-fill-upper {
     padding: 0;
@@ -548,7 +629,7 @@ body.remi-main > div {
     position: relative;
     box-sizing: border-box;
     border-radius: 100%;
-    background: var(--primary);
+    background: hsl(var(--primary));
     border: none;
     transition: transform .18s cubic-bezier(.4, 0, .2, 1), border .18s cubic-bezier(.4, 0, .2, 1), box-shadow .18s cubic-bezier(.4, 0, .2, 1), background .28s cubic-bezier(.4, 0, .2, 1);
     transition: transform .18s cubic-bezier(.4, 0, .2, 1), border .18s cubic-bezier(.4, 0, .2, 1), box-shadow .18s cubic-bezier(.4, 0, .2, 1), background .28s cubic-bezier(.4, 0, .2, 1), -webkit-transform .18s cubic-bezier(.4, 0, .2, 1)
@@ -560,24 +641,24 @@ body.remi-main > div {
     box-sizing: border-box;
     border-radius: 100%;
     background-image: none;
-    background: var(--primary);
+    background: hsl(var(--primary));
     border: none
 }
 .remi-main input[type='range']:focus:not(:active)::-webkit-slider-thumb {
-    box-shadow: 0 0 0 10px var(--accent);
+    box-shadow: 0 0 0 10px hsl(var(--accent));
 }
 .remi-main input[type='range']:focus:not(:active)::-moz-range-thumb {
-    box-shadow: 0 0 0 10px var(--accent);
+    box-shadow: 0 0 0 10px hsl(var(--accent));
 }
 .remi-main input[type='range']:active::-webkit-slider-thumb {
     background-image: none;
-    background: var(--primary);
+    background: hsl(var(--primary));
     /*-webkit-transform: scale(1.5);*/
     /*transform: scale(1.5)*/
 }
 .remi-main input[type='range']:active::-moz-range-thumb {
     background-image: none;
-    background: var(--primary);
+    background: hsl(var(--primary));
     /*transform: scale(1.5)*/
 }
 .remi-main input[type='range']::-ms-thumb {
@@ -585,17 +666,17 @@ body.remi-main > div {
     height: 15px;
     border: none;
     border-radius: 50%;
-    background: var(--primary);
+    background: hsl(var(--primary));
     /*transform: scale(.375);*/
     transition: transform .18s cubic-bezier(.4, 0, .2, 1), background .28s cubic-bezier(.4, 0, .2, 1);
     transition: transform .18s cubic-bezier(.4, 0, .2, 1), background .28s cubic-bezier(.4, 0, .2, 1), -webkit-transform .18s cubic-bezier(.4, 0, .2, 1)
 }
 .remi-main input[type='range']:focus:not(:active)::-ms-thumb {
-    background: radial-gradient(circle closest-side, var(--border) 0%, var(--border) 37.5%, var(--accent); 37.5%, var(--accent);100%);
+    background: radial-gradient(circle closest-side, hsl(var(--border)) 0%, hsl(var(--border)) 37.5%, hsl(var(--accent)); 37.5%, hsl(var(--accent));100%);
     transform: scale(1)
 }
 .remi-main input[type='range']:active::-ms-thumb {
-    background: var(--primary);
+    background: hsl(var(--primary));
     /*transform: scale(.5625)*/
 }
 .remi-main input[type='range']:disabled:focus::-webkit-slider-thumb,
@@ -612,15 +693,56 @@ body.remi-main > div {
     background: rgba(0, 0, 0, .26)
 }
 
-progress::-moz-progress-bar,
-progress::-webkit-progress-value,
-.Progress::-moz-progress-bar,
-.Progress::-webkit-progress-value {
-    background: var(--primary);
+progress {
+    /* Reset default styles */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    background: hsl(var(--muted));
+    border-radius: var(--radius, 4px);
+    height: var(--progress-height, 8px);
+    width: 100%;
+    overflow: hidden;
 }
 
-progress, .Progress {
-    color: var(--primary);
+/* WebKit (Chrome, Safari) */
+progress::-webkit-progress-bar {
+    background: hsl(var(--muted));
+    border-radius: hsl(var(--radius));
+}
+
+progress::-webkit-progress-value {
+    background: hsl(var(--primary));
+    border-radius: var(--radius, 4px);
+    transition: width 0.3s ease;
+}
+
+/* Firefox */
+progress::-moz-progress-bar {
+    background: hsl(var(--primary));
+    border-radius: hsl(var(--radius));
+}
+
+/* Indeterminate state */
+progress:indeterminate {
+    background: linear-gradient(
+        90deg,
+        hsl(var(--muted)) 25%,
+        hsl(var(--primary)) 50%,
+        hsl(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+    animation: progress-indeterminate 2s linear infinite;
+}
+
+@keyframes progress-indeterminate {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 .remi-main #loading {
@@ -638,7 +760,7 @@ progress, .Progress {
 .remi-main #loading-animation {
   width: 40px;
   height: 40px;
-  background-color: var(--primary);
+  background-color: hsl(var(--primary));
 
   margin: 100px auto;
   -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
@@ -669,7 +791,7 @@ ul, ul li {
 }
 
 ul:not(.Menu) {
-    border: 1px solid var(--border);
+    border: 1px solid hsl(var(--border));
 }
 
 ul > li {
@@ -762,7 +884,7 @@ ul > li {
     padding-left: 18px;
 }
 .remi-main .TreeItem:hover {
-    background-color: var(--border);
+    background-color: hsl(var(--border));
 }
 .remi-main .TreeItem[has-subtree='true'][treeopen='true']:hover {
     background-color: transparent;
