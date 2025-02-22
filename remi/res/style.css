@@ -445,74 +445,6 @@ body {
     color: hsl(var(--foreground));
 }
 
-/* Scrollbar Track */
-::-webkit-scrollbar {
-    width: var(--scrollbar-width);
-    height: var(--scrollbar-width); 
-    background-color: hsl(var(--muted)); 
-    border-radius: var(--radius, 4px);
-}
-
-/* Scrollbar Thumb */
-::-webkit-scrollbar-thumb {
-    background-color: hsl(var(--primary)); /* Color of the thumb */
-    border-radius: var(--radius); /* Rounded corners */
-    border: 2px solid transparent; /* Transparent border for smooth edges */
-    background-clip: padding-box; /* Ensures the border doesn't overlap the background */
-    transition: background-color 0.2s; /* Smooth transition for hover effect */
-}
-
-/* Scrollbar Thumb Hover */
-::-webkit-scrollbar-thumb:hover {
-    background-color: hsl(var(--primary)); /* Darker color on hover */
-}
-
-/* Scrollbar Thumb Active */
-::-webkit-scrollbar-thumb:active {
-    background-color: hsl(var(--primary)); /* Even darker color when clicked */
-}
-
-/* Scrollbar Corner (optional) */
-::-webkit-scrollbar-corner {
-    background-color: hsl(var(--muted)); /* Match the track color */
-}
-
-button {
-    border: unset;
-}
-
-.remi-main textarea:focus,
-.remi-main input[type='checkbox']:focus,
-.remi-main input[type='color']:focus,
-.remi-main input[type='number']:focus,
-.remi-main input[type='text']:focus,
-.remi-main input[type='date']:focus,
-.remi-main select:focus {
-    outline: 2px solid hsl(var(--ring));
-}
-::-moz-selection {
-    outline: 2px solid hsl(var(--ring));
-    text-shadow: none
-}
-::selection {
-    outline: 2px solid hsl(var(--ring));
-    text-shadow: none
-}
-.remi-main audio,
-.remi-main canvas,
-.remi-main iframe,
-.remi-main img,
-.remi-main svg,
-.remi-main video {
-    vertical-align: middle
-}
-.remi-main textarea {
-    resize: vertical
-}
-.remi-main a,
-.remi-main a:visited {
-    text-decoration: underline
-}
 html{
     height: 100%;
 }
@@ -686,157 +618,7 @@ body.remi-main > div {
     background: hsl(var(--accent));
     color: hsl(var(--accent-foreground))
 }
-.remi-main input[type='number'],
-.remi-main input[type='text'],
-.remi-main input[type='date'],
-.remi-main input[type='color'],
-.remi-main textarea,
-.remi-main select {
-    border: 1px solid hsl(var(--input));
-    border-radius: var(--radius);
-    font-size: 95%;
-    height: 28px;
-    padding: 4px;
-    width: 100%;
-    background: 0 0;
-    text-align: left;
-    color: inherit;
-    background-color: hsl(var(--background));
-}
 
-
-.remi-main input[type='number']:checked {
-    background-color: hsl(var(--primary));
-    color: hsl(var(--primary-foreground))
-}
-
-.remi-main textarea:disabled,
-.remi-main input[type='checkbox']:disabled,
-.remi-main input[type='color']:disabled,
-.remi-main input[type='number']:disabled,
-.remi-main input[type='text']:disabled,
-.remi-main input[type='date']:disabled {
-    color: hsl(var(--muted-foreground));
-    cursor: default;
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-    background: hsl(var(--muted));
-}
-
-input[type="checkbox"] {
-    /* Hide the default checkbox */
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 18px;
-    height: 18px;
-    border: 2px solid hsl(var(--border));
-    border-radius: var(--checkbox-radius);
-    background-color: hsl(var(--background));
-    cursor: pointer;
-    position: relative;
-    transition: background-color 0.2s, border-color 0.2s;
-}
-
-/* Checked state */
-input[type="checkbox"]:checked {
-    background-color: hsl(var(--primary));
-    border-color: hsl(var(--primary));
-    color: hsl(var(--primary-foreground));
-}
-
-/* Checkmark */
-input[type="checkbox"]:checked::after {
-    content: "✓";
-    position: relative;
-    left: -2px;
-    top: -6px;
-    width: 5px;
-    height: 10px;
-    font-size: x-large;
-    border-width: 0 2px 2px 0;
-    transform: translate(-50%, -60%) rotate(45deg);
-}
-
-/* Hover state */
-input[type="checkbox"]:hover {
-    border-color: hsl(var(--primary));
-}
-
-/* Disabled state */
-input[type="checkbox"]:disabled {
-    background-color: hsl(var(--muted));
-    border-color: hsl(var(--muted-foreground));
-    cursor: not-allowed;
-}
-
-input[type="checkbox"]:disabled:checked {
-    background-color: hsl(var(--muted-foreground));
-    border-color: hsl(var(--muted-foreground));
-}
-
-/* Focus state */
-input[type="checkbox"]:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px hsl(var(--ring));
-}
-
-.remi-main select {
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-}
-
-.remi-main button {
-    background: 0 0;
-    /*border: 1px solid hsl(var(--border));*/
-    border-radius: var(--radius);
-    position: relative;
-    margin: 0;
-    padding: 0 0px;
-    display: inline-block;
-    font-weight: 500;
-    text-align: center;
-    vertical-align: middle;
-    background: hsl(var(--primary));
-    color: hsl(var(--primary-foreground));
-    box-shadow: none;
-}
-@keyframes remi-main-outline-animation {
-    0% {outline: 1px dashed lightgray;}
-    100% {outline: 1px dashed white;}
-}
-.remi-main button:focus {
-    box-shadow: 3px 3px 5px rgb(130,130,130);
-    outline: 1px dashed lightgray;
-    animation-name: remi-main-outline-animation;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-.remi-main button:disabled {
-    background-color: #ddd;
-    background: #ddd;
-    border: 1px solid #ddd;
-    box-shadow: none;
-    cursor: default;
-    color: #9F9F9F;
-}
-.remi-main button:active{
-    background: hsl(var(--primary));
-    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .12), 0 2px 0px -1px rgba(0, 0, 0, .2);
-}
-.remi-main .TextInput {
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-    display: block;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    /*background: 0 0;*/
-    text-align: left;
-    color: inherit;
-}
 .remi-main table {
     border-spacing: 0;
     overflow: scroll;
@@ -959,192 +741,6 @@ input[type="checkbox"]:focus {
 
 .remi-main .MenuItem:focus-within > .Menu {
     display: block;
-}
-.remi-main input.file {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    outline: 0;
-    border: 0;
-    padding: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: hsl(var(--primary));
-    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
-}
-.remi-main input[type='range'] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: 0 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    outline: 0;
-    padding: 0;
-    color: hsl(var(--primary));
-    -webkit-align-self: center;
-    -ms-flex-item-align: center;
-    align-self: center;
-    z-index: 1;
-    cursor: pointer;
-    height: 100%;
-}
-.remi-main input[type='range']::-moz-focus-outer {
-    border: 0
-}
-.remi-main input[type='range']::-ms-tooltip {
-    display: none
-}
-.remi-main input[type='range']::-webkit-slider-runnable-track {
-    background: hsl(var(--border));
-    height: 2px;
-}
-.remi-main input[type='range']::-moz-range-track {
-    background: hsl(var(--border));
-    height: 2px;
-    border: none;
-}
-.remi-main input[type='range']::-ms-track {
-    background: hsl(var(--border));
-    height: 2px;
-    color: transparent;
-    width: 100%;
-    border: none;
-}
-.remi-main input[type='range']::-ms-fill-lower {
-    padding: 0;
-    background: linear-gradient(to right, transparent, transparent 16px, hsl(var(--border)), hsl(var(--border)))
-}
-.remi-main input[type='range']::-ms-fill-upper {
-    padding: 0;
-    background: linear-gradient(to left, transparent, transparent 16px, rgba(0, 0, 0, .26), rgba(0, 0, 0, .26)0)
-}
-.remi-main input[type='range']::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    top: -5px;
-    width: 12px;
-    height: 12px;
-    position: relative;
-    box-sizing: border-box;
-    border-radius: 100%;
-    background: hsl(var(--primary));
-    border: none;
-    transition: transform .18s cubic-bezier(.4, 0, .2, 1), border .18s cubic-bezier(.4, 0, .2, 1), box-shadow .18s cubic-bezier(.4, 0, .2, 1), background .28s cubic-bezier(.4, 0, .2, 1);
-    transition: transform .18s cubic-bezier(.4, 0, .2, 1), border .18s cubic-bezier(.4, 0, .2, 1), box-shadow .18s cubic-bezier(.4, 0, .2, 1), background .28s cubic-bezier(.4, 0, .2, 1), -webkit-transform .18s cubic-bezier(.4, 0, .2, 1)
-}
-.remi-main input[type='range']::-moz-range-thumb {
-    -moz-appearance: none;
-    width: 12px;
-    height: 12px;
-    box-sizing: border-box;
-    border-radius: 100%;
-    background-image: none;
-    background: hsl(var(--primary));
-    border: none
-}
-.remi-main input[type='range']:focus:not(:active)::-webkit-slider-thumb {
-    box-shadow: 0 0 0 10px hsl(var(--accent));
-}
-.remi-main input[type='range']:focus:not(:active)::-moz-range-thumb {
-    box-shadow: 0 0 0 10px hsl(var(--accent));
-}
-.remi-main input[type='range']:active::-webkit-slider-thumb {
-    background-image: none;
-    background: hsl(var(--primary));
-    /*-webkit-transform: scale(1.5);*/
-    /*transform: scale(1.5)*/
-}
-.remi-main input[type='range']:active::-moz-range-thumb {
-    background-image: none;
-    background: hsl(var(--primary));
-    /*transform: scale(1.5)*/
-}
-.remi-main input[type='range']::-ms-thumb {
-    width: 15px;
-    height: 15px;
-    border: none;
-    border-radius: 50%;
-    background: hsl(var(--primary));
-    /*transform: scale(.375);*/
-    transition: transform .18s cubic-bezier(.4, 0, .2, 1), background .28s cubic-bezier(.4, 0, .2, 1);
-    transition: transform .18s cubic-bezier(.4, 0, .2, 1), background .28s cubic-bezier(.4, 0, .2, 1), -webkit-transform .18s cubic-bezier(.4, 0, .2, 1)
-}
-.remi-main input[type='range']:focus:not(:active)::-ms-thumb {
-    background: radial-gradient(circle closest-side, hsl(var(--border)) 0%, hsl(var(--border)) 37.5%, hsl(var(--accent)); 37.5%, hsl(var(--accent));100%);
-    transform: scale(1)
-}
-.remi-main input[type='range']:active::-ms-thumb {
-    background: hsl(var(--primary));
-    /*transform: scale(.5625)*/
-}
-.remi-main input[type='range']:disabled:focus::-webkit-slider-thumb,
-.remi-main input[type='range']:disabled:active::-webkit-slider-thumb,
-.remi-main input[type='range']:disabled::-webkit-slider-thumb {
-    -webkit-transform: scale(.667);
-    /*transform: scale(.667);*/
-    background: rgba(0, 0, 0, .26)
-}
-.remi-main input[type='range']:disabled:focus::-moz-range-thumb,
-.remi-main input[type='range']:disabled:active::-moz-range-thumb,
-.remi-main input[type='range']:disabled::-moz-range-thumb {
-    /*transform: scale(.667);*/
-    background: rgba(0, 0, 0, .26)
-}
-
-progress {
-    /* Reset default styles */
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border: none;
-    background: hsl(var(--muted));
-    border-radius: var(--radius, 4px);
-    height: var(--progress-height, 8px);
-    width: 100%;
-    overflow: hidden;
-}
-
-/* WebKit (Chrome, Safari) */
-progress::-webkit-progress-bar {
-    background: hsl(var(--muted));
-    border-radius: hsl(var(--radius));
-}
-
-progress::-webkit-progress-value {
-    background: hsl(var(--primary));
-    border-radius: var(--radius, 4px);
-    transition: width 0.3s ease;
-}
-
-/* Firefox */
-progress::-moz-progress-bar {
-    background: hsl(var(--primary));
-    border-radius: hsl(var(--radius));
-}
-
-/* Indeterminate state */
-progress:indeterminate {
-    background: linear-gradient(
-        90deg,
-        hsl(var(--muted)) 25%,
-        hsl(var(--primary)) 50%,
-        hsl(var(--muted)) 75%
-    );
-    background-size: 200% 100%;
-    animation: progress-indeterminate 2s linear infinite;
-}
-
-@keyframes progress-indeterminate {
-    0% {
-        background-position: 200% 0;
-    }
-    100% {
-        background-position: -200% 0;
-    }
 }
 
 .remi-main #loading {
@@ -1291,8 +887,15 @@ ul > li {
 .remi-main .TreeItem[has-subtree='true'][treeopen='true']:hover {
     background-color: transparent;
 }
-.remi-main a {
+
+a {
     outline:none;
+    color: hsl(var(--foreground))
+}
+
+a:visited {
+    outline: none;
+    color: hsl(var(--muted-foreground))
 }
 
 .remi-main .FileFolderItem {
@@ -1310,4 +913,486 @@ ul > li {
 .remi-main .FileFolderItemIcon {
     width:30px;
     height:30px;
+}
+
+
+/* Input fields */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+input[type="date"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="file"]
+textarea,
+select {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid hsl(var(--input));
+    border-radius: var(--radius);
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 2px hsla(var(--ring), 0.2);
+}
+
+/* Buttons */
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: var(--radius);
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+    background-color: hsl(var(--primary) / 0.9);
+}
+
+button:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+input[type="submit"]:active {
+    background-color: hsl(var(--primary) / 0.8);
+}
+
+/* Secondary buttons */
+button.secondary,
+input[type="button"].secondary,
+input[type="reset"].secondary,
+input[type="submit"].secondary {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+}
+
+button.secondary:hover,
+input[type="button"].secondary:hover,
+input[type="reset"].secondary:hover,
+input[type="submit"].secondary:hover {
+    background-color: hsl(var(--secondary) / 0.9);
+}
+
+/* Checkboxes and radio buttons */
+input[type="checkbox"],
+input[type="radio"] {
+    width: 1rem;
+    height: 1rem;
+    margin: 0.25rem;
+    accent-color: hsl(var(--primary));
+}
+
+input[type="checkbox"] {
+    border-radius: var(--checkbox-radius);
+}
+
+input[type="color"] {
+    width: 2rem;
+    height: 2rem;
+    appearance: none;
+    color: inherit;
+    padding: unset;
+    background-color: hsl(var(--background));
+    border-color: hsl(var(--border));
+    border-radius: var(--radius);
+}
+
+/* Select dropdown */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1rem;
+}
+
+/* Range input */
+input[type="range"] {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 100%;
+    height: 0.5rem;
+    background: hsl(var(--muted)); 
+    border-radius: var(--radius); 
+    outline: none;
+    opacity: 1;
+    transition: background 0.2s, opacity 0.2s;
+}
+
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0.5rem;
+    background: hsl(var(--muted));
+    border-radius: var(--radius);
+}
+
+input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 0.5rem;
+    background: hsl(var(--muted));
+    border-radius: var(--radius);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: hsl(var(--primary)); 
+    border: 2px solid hsl(var(--primary-foreground)); 
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -0.375rem; 
+    transition: background 0.2s, transform 0.2s;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 1.25rem;
+    height: 1.25rem;
+    background: hsl(var(--primary)); 
+    border: 2px solid hsl(var(--primary-foreground)); 
+    border-radius: 50%; 
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+input[type="range"]:focus {
+    outline: none;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+    transform: scale(1.1); 
+    box-shadow: 0 0 0 2px hsla(var(--ring), 0.2); 
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+    transform: scale(1.1); 
+    box-shadow: 0 0 0 2px hsla(var(--ring), 0.2); 
+}
+
+input[type="range"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+input[type="range"]:disabled::-webkit-slider-thumb {
+    background: hsl(var(--muted-foreground)); 
+    border-color: hsl(var(--muted)); 
+}
+
+input[type="range"]:disabled::-moz-range-thumb {
+    background: hsl(var(--muted-foreground)); 
+    border-color: hsl(var(--muted)); 
+}
+
+/* Style the file selector button */
+input[type="file"]::file-selector-button {
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    border: none;
+    border-radius: var(--radius);
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Hover state for the file selector button */
+input[type="file"]::file-selector-button:hover {
+    background-color: hsl(var(--primary) / 0.9);
+}
+
+/* Active state for the file selector button */
+input[type="file"]::file-selector-button:active {
+    background-color: hsl(var(--primary) / 0.8);
+}
+
+/* Disabled state for the file selector button */
+input[type="file"]:disabled::file-selector-button {
+    background-color: hsl(var(--muted-foreground));
+    color: hsl(var(--muted));
+    cursor: not-allowed;
+}
+
+/* Style for icon (date picker) */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+input[type="month"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.5); /* Inverted colors for better contrast */
+    cursor: pointer;
+    /*padding: 0.25rem;*/
+    border-radius: var(--radius);
+    /*background-color: hsl(var(--muted));
+    transition: background-color 0.2s;*/
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="time"]::-webkit-calendar-picker-indicator:hover,
+input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover,
+input[type="month"]::-webkit-calendar-picker-indicator:hover {
+    background-color: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
+}
+
+/* Styles for increment/decrement (spin button) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="time"]::-webkit-inner-spin-button,
+input[type="datetime-local"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: hsl(var(--muted));
+    color: hsl(var(--foreground));
+    cursor: pointer;
+    /*padding: 0.25rem;*/
+    border-radius: var(--radius);
+    margin: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button:hover,
+input[type="time"]::-webkit-inner-spin-button:hover,
+input[type="datetime-local"]::-webkit-inner-spin-button:hover {
+    background-color: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
+}
+
+/* Styles for clear button */
+input[type="date"]::-webkit-clear-button,
+input[type="time"]::-webkit-clear-button,
+input[type="datetime-local"]::-webkit-clear-button,
+input[type="month"]::-webkit-clear-button {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: hsl(var(--destructive));
+    color: hsl(var(--destructive-foreground));
+    cursor: pointer;
+    /*padding: 0.25rem;*/
+    border-radius: var(--radius);
+    margin-right: 0.5rem;
+}
+
+input[type="date"]::-webkit-clear-button:hover,
+input[type="time"]::-webkit-clear-button:hover,
+input[type="datetime-local"]::-webkit-clear-button:hover,
+input[type="month"]::-webkit-clear-button:hover {
+    background-color: hsl(var(--destructive));
+    color: hsl(var(--destructive-foreground));
+}
+
+/* Style for the editing container date/time */
+input[type="date"]::-webkit-datetime-edit,
+input[type="time"]::-webkit-datetime-edit,
+input[type="datetime-local"]::-webkit-datetime-edit,
+input[type="month"]::-webkit-datetime-edit {
+    /*padding: 0.5rem;*/
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    border-radius: var(--radius);
+}
+
+/* Style for the editing wrapper */
+input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+input[type="time"]::-webkit-datetime-edit-fields-wrapper,
+input[type="datetime-local"]::-webkit-datetime-edit-fields-wrapper,
+input[type="month"]::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+    background-color: transparent;
+}
+
+/* Style for the editing texts (e.g., "/", ":") */
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="time"]::-webkit-datetime-edit-text,
+input[type="datetime-local"]::-webkit-datetime-edit-text,
+input[type="month"]::-webkit-datetime-edit-text {
+    color: hsl(var(--muted-foreground));
+    padding: 0 0.25rem;
+}
+
+/* Styles for year/month/day/hour/minute */
+input[type="date"]::-webkit-datetime-edit-year-field,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="time"]::-webkit-datetime-edit-hour-field,
+input[type="time"]::-webkit-datetime-edit-minute-field,
+input[type="datetime-local"]::-webkit-datetime-edit-year-field,
+input[type="datetime-local"]::-webkit-datetime-edit-month-field,
+input[type="datetime-local"]::-webkit-datetime-edit-day-field,
+input[type="datetime-local"]::-webkit-datetime-edit-hour-field,
+input[type="datetime-local"]::-webkit-datetime-edit-minute-field,
+input[type="month"]::-webkit-datetime-edit-month-field {
+    color: hsl(var(--foreground));
+    background-color: transparent;
+    padding: 0 0.25rem;
+    border-radius: var(--radius);
+}
+
+/* Focus */
+input[type="date"]:focus::-webkit-datetime-edit,
+input[type="time"]:focus::-webkit-datetime-edit,
+input[type="datetime-local"]:focus::-webkit-datetime-edit,
+input[type="month"]:focus::-webkit-datetime-edit {
+    outline: none;
+    box-shadow: 0 0 0 2px hsla(var(--ring), 0.2);
+}
+
+/* Progress and meter */
+progress,
+meter {
+    width: 100%;
+    height: 0.5rem;
+    border-radius: var(--radius);
+    background-color: hsl(var(--muted));
+}
+
+progress::-webkit-progress-bar,
+meter::-webkit-meter-bar {
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius);
+}
+
+progress::-webkit-progress-value,
+meter::-webkit-meter-optimum-value {
+    background-color: hsl(var(--primary));
+    border-radius: var(--radius);
+}
+
+/* Fieldset and legend */
+fieldset {
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+legend {
+    padding: 0 0.5rem;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.875rem;
+}
+
+/* Disabled state */
+input:disabled,
+textarea:disabled,
+select:disabled,
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Destructive buttons */
+button.destructive,
+input[type="button"].destructive,
+input[type="reset"].destructive,
+input[type="submit"].destructive {
+    background-color: hsl(var(--destructive));
+    color: hsl(var(--destructive-foreground));
+}
+
+button.destructive:hover,
+input[type="button"].destructive:hover,
+input[type="reset"].destructive:hover,
+input[type="submit"].destructive:hover {
+    background-color: hsl(var(--destructive) / 0.9);
+}
+
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    border: 1px solid hsl(var(--input));
+    border-radius: var(--radius);
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-size: 1rem;
+    font-family: inherit;
+    line-height: 1.5;
+    resize: vertical; /* Allows vertical resizing */
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: hsl(var(--ring));
+    box-shadow: 0 0 0 2px hsla(var(--ring), 0.2);
+}
+
+textarea:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: hsl(var(--muted));
+}
+
+/* Optional: Add a custom scrollbar for textarea */
+textarea::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+textarea::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground));
+    border-radius: var(--radius);
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.8);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground));
+    border-radius: var(--radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.8);
+}
+
+::selection {
+    background-color: hsl(var(--primary)); /* Use the primary color for the selection background */
+    color: hsl(var(--primary-foreground)); /* Use the primary foreground color for the text */
+}
+
+/* Optional: Add styles for specific elements if needed */
+textarea::selection,
+input::selection {
+    background-color: hsl(var(--accent)); /* Use the accent color for input and textarea selections */
+    color: hsl(var(--accent-foreground)); /* Use the accent foreground color for the text */
 }

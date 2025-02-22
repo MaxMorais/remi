@@ -54,6 +54,22 @@ class MyApp(App):
         # setting the listener for the onclick event of the button
         self.bt.onclick.do(self.on_button_pressed)
 
+        inputs = ['text', 'password', 'email', 'number',
+                  'date', 'datetime', 'datetime-local', 'month', 
+                  'week', 'time', 'url', 'search', 'tel',
+                  'checkbox', 'radio', 'file', 'image', 'reset', 
+                  'submit', 'color', 'range']
+        inputs_elements = []
+
+        for input_type in inputs:
+            inputs_elements.append(gui.Label(f'I am a {input_type} input', width=200, height=30, margin='10px'))
+            el = gui.Input(input_type)
+            el.onchange.do(self.on_text_area_change)
+            inputs_elements.append(el)
+
+        inputs_elements.append(gui.Label('I am a textarea', width=200, height=30, margin='10px'))
+
+
         self.txt = gui.TextInput(width=200, height=30, margin='10px')
         self.txt.set_text('This is a TEXTAREA')
         self.txt.onchange.do(self.on_text_area_change)
@@ -119,7 +135,7 @@ class MyApp(App):
         subti4.append([subsubti1, subsubti2, subsubti3])
         
         # appending a widget to another, the first argument is a string key
-        subContainerRight.append([self.counter, self.lbl, self.bt, self.txt, self.spin, self.progress, self.check, self.btInputDiag, self.btFileDiag])
+        subContainerRight.append(inputs_elements+[self.counter, self.lbl, self.bt, self.txt, self.spin, self.progress, self.check, self.btInputDiag, self.btFileDiag])
         # use a defined key as we replace this widget later
         fdownloader = gui.FileDownloader('download test', '../remi/res/logo.png', width=200, height=30, margin='10px')
         subContainerRight.append(fdownloader, key='file_downloader')

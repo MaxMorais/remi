@@ -29,21 +29,16 @@ import threading
 import traceback
 import time
 
-if remi.server.pyLessThan3:
-    import imp
 
-    def load_source(filename):
-        return imp.load_source('project', filename)
-else:
-    import importlib.machinery
-    import importlib.util
+import importlib.machinery
+import importlib.util
 
-    def load_source(filename):
-        loader = importlib.machinery.SourceFileLoader('project', filename)
-        spec = importlib.util.spec_from_loader(loader.name, loader)
-        _module = importlib.util.module_from_spec(spec)
-        loader.exec_module(_module)
-        return _module
+def load_source(filename):
+    loader = importlib.machinery.SourceFileLoader('project', filename)
+    spec = importlib.util.spec_from_loader(loader.name, loader)
+    _module = importlib.util.module_from_spec(spec)
+    loader.exec_module(_module)
+    return _module
 
 
 class DraggableItem(gui.EventSource):
