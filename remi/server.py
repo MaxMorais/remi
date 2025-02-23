@@ -306,7 +306,7 @@ def parse_parametrs(p):
 
 
 # noinspection PyPep8Naming
-class App(BaseHTTPRequestHandler, object):
+class BaseApp(BaseHTTPRequestHandler, object):
 
     """
     This class will handles any incoming request from the browser
@@ -336,7 +336,7 @@ class App(BaseHTTPRequestHandler, object):
             vals = []
         return vals
 
-    def _instance(self):
+    def _instance(self, head_cls, body_cls, html_cls):
         global clients
         global runtimeInstances
         """
@@ -365,14 +365,12 @@ class App(BaseHTTPRequestHandler, object):
         #if the client instance doesn't exist
         if not(self.session in clients):
             self.update_interval = self.server.update_interval
-
-            from remi import gui
             
-            head = gui.HEAD(self.server.title)
+            head = head_cls(self.server.title)
             # use the default css, but append a version based on its hash, to stop browser caching
             head.add_child('internal_css', "<link href='/res:style.css' rel='stylesheet' />\n")
 
-            body = gui.BODY()
+            body = body_cls()
             body.add_class('remi-main')
             body.onload.connect(self.onload)
             body.ononline.connect(self.ononline)
@@ -380,7 +378,7 @@ class App(BaseHTTPRequestHandler, object):
             body.onpageshow.connect(self.onpageshow)
             body.onresize.connect(self.onresize)
 
-            self.page = gui.HTML()
+            self.page = html_cls()
             self.page.add_child('head', head)
             self.page.add_child('body', body)
 
@@ -759,6 +757,12 @@ class App(BaseHTTPRequestHandler, object):
         """ WebPage Event that occurs on webpage gets resized
         """
         self._log.debug('App.onresize event occurred. Width:%s Height:%s'%(width, height))
+
+
+class App(BaseApp):
+    def _instance(self):
+        from remi import gui
+        return super(App, self)._instance(gui.HEAD, gui.BODY, gui.HTML)
 
 
 class ThreadedHTTPServer(socketserver.ThreadingMixIn, HTTPServer):
